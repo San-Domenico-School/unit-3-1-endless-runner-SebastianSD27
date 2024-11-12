@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
     }
 
+    // Player's jump force
     private void OnJump(InputValue input)
     {
         if (isOnGround && !gameOver)
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Player collision with ground
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Ground") ;
@@ -51,7 +53,6 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
         }
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
