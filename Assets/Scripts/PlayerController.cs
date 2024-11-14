@@ -14,8 +14,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     // fields
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float gravityModifier;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float gravityModifier = 1;
     [SerializeField] private ParticleSystem explosionsParticle;
     [SerializeField] private ParticleSystem dirtParticle;
     [SerializeField] private AudioClip jumpSound;
@@ -30,10 +30,19 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        playerAnimation = GetComponent<Animator>();
 
         isOnGround = true;
 
         Physics.gravity *= gravityModifier;
+    }
+
+    private void Update()
+    {
+       // if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+        {
+        
+        }
     }
 
     // Player's jump force
@@ -41,22 +50,31 @@ public class PlayerController : MonoBehaviour
     {
         if (isOnGround && !gameOver)
         {
+            playerAnimation.SetTrigger("Jump_trig");
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
         }
     }
 
     // Player collision with ground
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Ground") ;
+        if (collision.gameObject.name == "Ground") 
         {
             isOnGround = true;
+        }
+
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            gameOver = true;
+            playerAnimation.SetTrigger("Death_trig");
+            playerAnimation.SetInteger("DeathType_int", 1); 
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
     }
 
 
