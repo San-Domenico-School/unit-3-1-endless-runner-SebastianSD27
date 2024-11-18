@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AnimatorController : MonoBehaviour
 {
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,7 @@ public class AnimatorController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            animator.SetInteger("DeathType_int", 1);
+           // animator.SetInteger("DeathType_int", 1);
         }
     }
 }

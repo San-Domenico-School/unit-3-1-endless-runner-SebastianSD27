@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ParticleSystem dirtParticle;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip crashSound;
-    private Animator playerAnimation;
+    private Animator playerAnimator;
     private AudioSource playerAudio;
     private Rigidbody playerRb;
     private bool isOnGround;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        playerAnimation = GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>();
 
         isOnGround = true;
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isOnGround && !gameOver)
         {
-            playerAnimation.SetTrigger("Jump_trig");
+            playerAnimator.SetTrigger("Jump_trig");
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
         }
@@ -67,14 +67,14 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             gameOver = true;
-            playerAnimation.SetTrigger("Death_trig");
-            playerAnimation.SetInteger("DeathType_int", 1); 
+            playerAnimator.SetBool("Death_trig", true);
+            playerAnimator.SetInteger("DeathType_int", 1); 
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
+        
     }
 
 
