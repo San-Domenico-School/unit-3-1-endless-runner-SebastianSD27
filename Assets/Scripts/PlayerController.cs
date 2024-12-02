@@ -31,18 +31,9 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
-
-        isOnGround = true;
-
         Physics.gravity *= gravityModifier;
-    }
 
-    private void Update()
-    {
-       // if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
-        {
         
-        }
     }
 
     // Player's jump force
@@ -53,6 +44,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetTrigger("Jump_trig");
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
+            dirtParticle.Stop();
         }
     }
 
@@ -62,19 +54,18 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.name == "Ground") 
         {
             isOnGround = true;
+            dirtParticle.Play();
         }
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             gameOver = true;
-            playerAnimator.SetBool("Death_trig", true);
-            playerAnimator.SetInteger("DeathType_int", 1); 
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
+            //playerAnimator.SetBool("Death_trig", true);
+            //playerAnimator.SetInteger("DeathType_int", 1);
+            explosionsParticle.Play();
+            Debug.Log("Explosion is Playing: " + explosionsParticle.isPlaying);
+            dirtParticle.Stop();
+        }    
     }
 
 
