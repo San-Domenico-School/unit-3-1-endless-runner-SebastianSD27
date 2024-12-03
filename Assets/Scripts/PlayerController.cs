@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
             gameOver = true;
-            //playerAnimator.SetBool("Death_trig", true);
             playerAnimator.SetInteger("DeathType_int", 1);
             playerAnimator.SetTrigger("Death_b");
             explosionsParticle.Play();
