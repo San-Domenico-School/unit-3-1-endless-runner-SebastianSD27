@@ -15,17 +15,13 @@ public class MoveLeft : MonoBehaviour
     //fields
     private float speed = 10f;
     private float leftBound = -15;
-    private PlayerController playerControllerScript;
 
-    private void Start()
-    {
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-    }
 
+   
     // Update is called once per frame
     void Update()
     {
-        if (!playerControllerScript.gameOver)
+        if (!GameManager.gameOver)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
         }
