@@ -24,6 +24,7 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
     }
 
+    // Stop spawning obstacles at Game Over
     private void SpawnObstacle()
     {
         if (!GameManager.gameOver)

@@ -13,7 +13,7 @@ using UnityEngine;
 public class MoveLeft : MonoBehaviour
 {
     //fields
-    private float speed = 10f;
+    public float speed = 10f;                 
     private float leftBound = -15;
 
 

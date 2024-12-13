@@ -13,7 +13,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    // fields
+    //fields
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float gravityModifier = 1;
     [SerializeField] private ParticleSystem explosionsParticle;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
         playerAudio = GetComponent<AudioSource>();
-        
+
     }
 
     // Player's jump force
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     // Player collision with ground
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Ground") 
+        if (collision.gameObject.name == "Ground")
         {
             isOnGround = true;
             dirtParticle.Play();
@@ -61,18 +61,29 @@ public class PlayerController : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
-            //GameManager.gameOver = true;
+            GameManager.gameOver = true;
             playerAnimator.SetInteger("DeathType_int", 1);
             playerAnimator.SetTrigger("Death_b");
             explosionsParticle.Play();
             Debug.Log("Explosion is Playing: " + explosionsParticle.isPlaying);
             dirtParticle.Stop();
             playerAudio.PlayOneShot(crashSound, 1.0f);
-
             
-        }    
+
+
+        }
     }
-
-
+    // Player score collection
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Scoreable"))
+        {
+            GameManager.ChangeScore(1);
+        }
+        if (other.CompareTag("Collectable"))
+        {
+            GameManager.ChangeScore(2);
+        }
+    }
 
 }
