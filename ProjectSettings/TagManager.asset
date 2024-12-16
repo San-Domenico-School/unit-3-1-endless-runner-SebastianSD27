@@ -7,7 +7,14 @@ TagManager:
   - Obstacle
   - Scoreable
   - Collectable
-  - Powerup
+  - PowerUp
+  - Debuff
+  - ScoreUp1
+  - BadApple
+  - BadBanana
+  - Donut
+  - TShirt
+  - Coffee
   layers:
   - Default
   - TransparentFX

@@ -16,8 +16,6 @@ public class MoveLeft : MonoBehaviour
     public float speed = 10f;                 
     private float leftBound = -15;
 
-
-   
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +25,16 @@ public class MoveLeft : MonoBehaviour
         }
 
         if (transform.position.x <= leftBound && gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (transform.position.x <= leftBound && gameObject.CompareTag("PowerUp"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (transform.position.x <= leftBound && gameObject.CompareTag("Debuff"))
         {
             Destroy(gameObject);
         }

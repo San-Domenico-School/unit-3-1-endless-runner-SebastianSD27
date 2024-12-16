@@ -6,6 +6,7 @@ using TMPro;
 /*****************************************************
  * Attached to Monobehavior
  * Game manager for UI and Player
+ * 
  * Sebastian Balakier
  * 12/9/24, Version 1.0
  ****************************************************/

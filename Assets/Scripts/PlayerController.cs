@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
     private Rigidbody playerRb;
     private bool isOnGround;
+    private int score = 0;
     //public bool gameOver { get; private set; }
 
     // Start is called before the first frame update
@@ -68,8 +69,30 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Explosion is Playing: " + explosionsParticle.isPlaying);
             dirtParticle.Stop();
             playerAudio.PlayOneShot(crashSound, 1.0f);
-            
+        }
+        if (collision.gameObject.CompareTag("TShirt"))
+            {
+                score += 2;
+                Destroy(collision.gameObject);
 
+            }
+
+        if (collision.gameObject.CompareTag("BadApple")) 
+            {
+                score -= 1;
+                Destroy(collision.gameObject);
+            }
+        if (collision.gameObject.CompareTag("BadBanana")) 
+        {
+            score -= 3;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Coffee"))
+        {
+
+        }
+        if (collision.gameObject.CompareTag("Donut"))
+        {
 
         }
     }
@@ -85,5 +108,4 @@ public class PlayerController : MonoBehaviour
             GameManager.ChangeScore(2);
         }
     }
-
 }
