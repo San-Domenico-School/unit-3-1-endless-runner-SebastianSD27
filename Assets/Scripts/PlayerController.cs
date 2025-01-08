@@ -72,28 +72,25 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("TShirt"))
             {
-                score += 2;
-                Destroy(collision.gameObject);
+            GameManager.ChangeScore(+2);
+            Destroy(collision.gameObject);
 
             }
 
         if (collision.gameObject.CompareTag("BadApple")) 
             {
-                score -= 1;
-                Destroy(collision.gameObject);
+            GameManager.ChangeScore(-1);
+            Destroy(collision.gameObject);
             }
         if (collision.gameObject.CompareTag("BadBanana")) 
         {
-            score -= 3;
+            GameManager.ChangeScore(-3);
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Coffee"))
         {
-
-        }
-        if (collision.gameObject.CompareTag("Donut"))
-        {
-
+            MoveLeft.isSpeedingUp = true;
+            Destroy(collision.gameObject);
         }
     }
     // Player score collection

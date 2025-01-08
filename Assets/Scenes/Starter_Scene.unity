@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea917a22ae7c45d1bd83a0c4d2fc684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  normalSpeed: 10
 --- !u!1 &1069232303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,6 +2724,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 2044829859}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2044829869 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400066, guid: 4a7c3ad7168bb834b87a91e3f94ad3d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2044829859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2104809324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,11 +2761,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 6868425021876368652, guid: e1f20805dfbf14460be8e16b9e4b5477,
     type: 3}
-  tShirtPrefab: {fileID: 0}
-  badApplePrefab: {fileID: 0}
-  badBananaPrefab: {fileID: 0}
-  coffeePrefab: {fileID: 0}
-  donutPrefab: {fileID: 0}
+  tShirtPrefab: {fileID: 2668420905192651712, guid: b2b68556966504b4a9e90a04c53d200f,
+    type: 3}
+  badApplePrefab: {fileID: 8949778680829063006, guid: 1d92cb162e526483787a4ca810876d40,
+    type: 3}
+  badBananaPrefab: {fileID: 2193081297584771320, guid: c40eaa93621604a6ca03e624f8e3cc78,
+    type: 3}
+  coffeePrefab: {fileID: 8792160165571227311, guid: e2278e8d104214f3c96e0bc100f459aa,
+    type: 3}
+  playerTransform: {fileID: 2044829869}
 --- !u!4 &2104809326
 Transform:
   m_ObjectHideFlags: 0

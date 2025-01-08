@@ -13,8 +13,21 @@ using UnityEngine;
 public class MoveLeft : MonoBehaviour
 {
     //fields
-    public float speed = 10f;                 
+    private float normalSpeed;
+    private static float speed;
     private float leftBound = -15;
+    public static bool isSpeedingUp;
+    private static bool isCoroutineRunning;
+
+    private void Start()
+    {
+        normalSpeed = 10;
+        if (!isSpeedingUp)
+        {
+            speed = normalSpeed;
+        }
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -38,5 +51,24 @@ public class MoveLeft : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(isSpeedingUp && !isCoroutineRunning)
+        {
+            StartCoroutine("NormalSpeed");
+        }
     }
+
+    IEnumerator NormalSpeed()
+    {
+        isCoroutineRunning = true;
+        speed = 18;
+        Debug.Log(speed);
+        yield return new WaitForSeconds(7);
+        isSpeedingUp = false;
+        speed = normalSpeed;
+        isCoroutineRunning = false;
+        Debug.Log(speed);
+    }
+
+
 }
